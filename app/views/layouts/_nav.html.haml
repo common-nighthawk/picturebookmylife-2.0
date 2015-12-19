@@ -1,0 +1,11 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{:href => "/"}
+        %img{:alt => "PBML Logo", :src => "http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png"}
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        - if current_user
+          = link_to "log out, #{current_user.username}", destroy_user_session_path, method: :delete
+        - else
+          = link_to "sign in", root_path
