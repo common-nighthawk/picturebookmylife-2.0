@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   validates :username, length: { maximum: 30 }
   validate :username_is_valid
 
+  def to_param
+    username
+  end
+
   private
 
   def username_is_valid

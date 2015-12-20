@@ -18,7 +18,7 @@
 
 .row
   .col-sm-8.col-sm-offset-2
-    %h3 Create An Account
+    %h3 Sign Up
     = form_for(:user, url: user_registration_path) do |f|
       .field
         = f.label :email
@@ -39,6 +39,27 @@
       .actions
         = f.submit "Create My Account"
 
-.row
-  .col-sm-10.col-sm-offset-1
-    %h3 Featured
+-# .row
+-#   .col-sm-12
+-#     %h3 Browse Books
+-# .row
+-#   .col-sm-4
+-#     Title
+-#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
+-#   .col-sm-4
+-#     Title
+-#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
+-#   .col-sm-4
+-#     Title
+-#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
+
+-# .row
+-#   .col-sm-12
+-#     %h3 Browse Authors
+-# .row
+-#   .col-sm-4
+-#     daniel
+-#   .col-sm-4
+-#     tom
+-#   .col-sm-4
+-#     susan
