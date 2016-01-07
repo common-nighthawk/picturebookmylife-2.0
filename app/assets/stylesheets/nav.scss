@@ -1,8 +1,14 @@
-nav {
-  img { max-height: 100%; }
-  .navbar-right { font-style: italic; }
-}
+body { background-image: image-url("fabric_plaid.png"); }
+.alert { text-align: center; }
 
-.alert {
-  text-align: center;
+nav.navbar {
+  background-image: image-url("low_contrast_linen.png");
+  border: none;
+  border-radius: 0;
+  img { max-height: 100%; }
+  .navbar-right {
+    font-style: italic;
+    a { color: lightgray; }
+    a:hover { color: white; }
+  }
 }

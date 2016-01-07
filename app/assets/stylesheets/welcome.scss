@@ -1,3 +1,10 @@
 .controller-welcome {
-  input { width: 100%; }
+  input, button { width: 100%; }
+  button { margin-top: 10px; }
+
+  span {
+    font-style: italic;
+    font-size: 0.75em;
+    margin-left: 5px;
+  }
 }

@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :password, presence: true
 
-  validates :email, uniqueness: true
-  validates :username, uniqueness: true
+  validates_uniqueness_of :email, case_sensitive: false
+  validates_uniqueness_of :username, case_sensitive: false
 
   validates :username, length: { maximum: 30 }
   validate :username_is_valid
+
+  has_many :books
 
   def to_param
     username

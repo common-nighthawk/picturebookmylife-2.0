@@ -9,9 +9,10 @@ class SessionsController < Devise::SessionsController
   def create
     if @user.blank?
       redirect_to root_path
-    elsif @user.valid_password?(params[:user][:password])
+    elsif @user.valid_password?(sign_in_params[:password])
       set_flash_message(:notice, :signed_in)
-      self.resource = warden.authenticate!(auth_options)
+      # self.resource = warden.authenticate!(auth_options)
+      sign_in(@user)
       redirect_to user_path(@user)
     else
       set_flash_error('wrong password')
@@ -26,11 +27,11 @@ class SessionsController < Devise::SessionsController
   private
 
   def set_user
-    if params[:user][:email].include?('@')
-      @user = User.find_by(email: params[:user][:email])
+    if sign_in_params[:email].include?('@')
+      @user = User.find_by(email: sign_in_params[:email])
       set_flash_error('no email') unless @user
     else
-      @user = User.find_by(username: params[:user][:email])
+      @user = User.find_by(username: sign_in_params[:email])
       set_flash_error('no username') unless @user
     end
   end

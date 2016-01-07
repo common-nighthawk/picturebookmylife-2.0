@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :require_no_authentication
 
   def create
-    build_resource(sign_up_params.merge(username: params[:user][:username]))
+    build_resource(sign_up_params)
 
     resource.save
     yield resource if block_given?
@@ -40,5 +40,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def destroy
     raise
+  end
+
+  private
+
+  def sign_up_params
+    devise_parameter_sanitizer.sanitize(:sign_up)
+      .merge(username: params[:user][:username])
   end
 end
