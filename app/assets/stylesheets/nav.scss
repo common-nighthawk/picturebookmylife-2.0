@@ -1,4 +1,8 @@
-body { background-image: image-url("fabric_plaid.png"); }
+body {
+  background-image: image-url("fabric_plaid.png");
+  font-family: 'Open Sans', sans-serif;
+}
+
 .alert { text-align: center; }
 
 nav.navbar {
@@ -6,9 +10,19 @@ nav.navbar {
   border: none;
   border-radius: 0;
   img { max-height: 100%; }
+  .navbar-header {
+    a.navbar-brand {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.5em;
+      color: white;
+      &:hover { color: lightgray; }
+    }
+  }
   .navbar-right {
-    font-style: italic;
-    a { color: lightgray; }
-    a:hover { color: white; }
+    font-size: 0.9em;
+    a {
+      color: white;
+      &:hover { color: lightgray; }
+    }
   }
 }
