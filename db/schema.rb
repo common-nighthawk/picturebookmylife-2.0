@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20151220222911) do
 
   create_table "pages", force: :cascade do |t|
     t.integer  "book_id"
-    t.text     "text"
+    t.integer  "position"
     t.string   "flickr_photo_id"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.boolean  "admin",               default: false
     t.string   "email",               default: "",    null: false
     t.string   "username",            default: "",    null: false

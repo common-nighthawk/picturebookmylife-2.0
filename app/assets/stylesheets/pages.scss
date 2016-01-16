@@ -1,0 +1,24 @@
+.controller-pages {
+  .page-text {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .page-image {
+  }
+  .page-arrow {
+    margin-left: 50%;
+    margin-right: 50%;
+    a {
+      color: #333333;
+    }
+  }
+  img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+  }
+  .photo-carousel {
+    display: flex;
+    align-items: center;
+  }
+}

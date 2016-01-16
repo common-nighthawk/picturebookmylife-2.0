@@ -1,0 +1,17 @@
+.controller-books {
+  .cover-page {
+    margin-top: 20px;
+    position: relative;
+  }
+  img {
+    width: 100%;
+  }
+  h3 {
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4em;
+  }
+}

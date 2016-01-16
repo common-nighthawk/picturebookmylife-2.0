@@ -3,7 +3,7 @@
     .navbar-header
       %a.navbar-brand{:href => "/"}
         PictureBookMyLife
-    %ul.nav.navbar-nav.navbar-right
+    %ul.nav.navbar-nav.navbar-right.hidden-xs
       %li
         - if current_user
           = link_to "log out, #{current_user.username}", destroy_user_session_path, method: :delete
