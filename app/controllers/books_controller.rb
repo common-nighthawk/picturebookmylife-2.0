@@ -5,6 +5,9 @@ class BooksController < ApplicationController
     @book = @user.books.find(params[:id])
   end
 
+  def index
+  end
+
   private
 
   def find_user

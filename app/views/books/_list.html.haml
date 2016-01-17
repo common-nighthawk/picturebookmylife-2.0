@@ -1,0 +1,5 @@
+.book-list
+  - books.each_with_index do |book, i|
+    .col-sm-3{ class: ('col-sm-offset-2' if i % 3 == 0) }
+      %h4= book.title
+      = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.user, book)

@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
       set_flash_message(:notice, :signed_in)
       # self.resource = warden.authenticate!(auth_options)
       sign_in(@user)
-      redirect_to user_path(@user)
+      redirect_to user_books_path(@user)
     else
       set_flash_error('wrong password')
       redirect_to root_path

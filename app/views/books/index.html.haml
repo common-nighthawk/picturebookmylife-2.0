@@ -1,0 +1,7 @@
+.row
+  .col-sm-8.col-sm-offset-2
+    %h3
+      = @user == current_user ? "My Books" : "@#{@user.username}'s Books"
+
+.row
+  = render partial: 'list', locals: { books: @user.books }

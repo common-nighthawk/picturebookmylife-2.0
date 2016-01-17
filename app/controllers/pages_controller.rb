@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :find_book
 
   def show
-    @page = @book.pages.find(params[:id])
+    @page = @book.pages.find_by!(position: params[:id])
   end
 
   private

@@ -1,69 +1,15 @@
-.row
-  .col-sm-8.col-sm-offset-2
-    %h3 Sign In
-    = form_for(:user, url: user_session_path) do |f|
-      .field
-        = f.label :field_name, 'Username or Email'
-        %br/
-        = f.text_field :email, autofocus: true
-      .field
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: 'off'
-      .field.hidden
-        = f.check_box :remember_me, { checked: true }
-        = f.label :remember_me
-      -# .actions
-      -#   = f.submit 'Log Me In'
-      %button.btn.btn-warning{:type => "submit"} Log Me In
+- unless current_user
+  .row
+    .col-sm-8.col-sm-offset-2
+      = render partial: 'sign_in'
+
+  .row
+    .col-sm-8.col-sm-offset-2
+      = render partial: 'sign_up'
 
 .row
   .col-sm-8.col-sm-offset-2
-    %h3 Sign Up
-    = form_for(:user, url: user_registration_path) do |f|
-      .field
-        = f.label :email
-        %span for password recovery. visible to only you
-        %br/
-        = f.email_field :email
-      .field
-        = f.label :username
-        %span what everyone will know you by
-        %br/
-        = f.text_field :username
-      .field
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: 'off'
-      .field
-        = f.label :password_confirmation, 'Password Confirmation'
-        %br/
-        = f.password_field :password_confirmation, autocomplete: 'off'
-      -# .actions
-      -#   = f.submit 'Create My Account'
-      %button.btn.btn-warning{:type => "submit"} Create My Account
+    %h3 Featured Books
 
--# .row
--#   .col-sm-12
--#     %h3 Browse Books
--# .row
--#   .col-sm-4
--#     Title
--#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
--#   .col-sm-4
--#     Title
--#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
--#   .col-sm-4
--#     Title
--#     = link_to image_tag('http://images.nationalgeographic.com/wpf/media-live/photos/000/933/cache/casa-penedo-portugal_93376_990x742.jpg'), 'http://www.google.com'
-
--# .row
--#   .col-sm-12
--#     %h3 Browse Authors
--# .row
--#   .col-sm-4
--#     daniel
--#   .col-sm-4
--#     tom
--#   .col-sm-4
--#     susan
+.row
+  = render partial: 'books/list', locals: { books: Book.featured }

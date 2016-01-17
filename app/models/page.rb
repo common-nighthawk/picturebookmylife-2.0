@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
     response = HTTParty.get("https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=" + api_key + "&photo_id=" + photo_id + "&format=json&nojsoncallback=1")
     json = JSON.parse(response.body)
     photos = json['sizes']['size']
-    photo = size ? photos[size] : photos.last
+    photo = (photos[size] if size) || photos.last
     photo['source']
   end
 
@@ -17,5 +17,9 @@ class Page < ActiveRecord::Base
 
   def previous_page
     book.pages.find_by(position: position - 1)
+  end
+
+  def to_param
+    position.to_s
   end
 end

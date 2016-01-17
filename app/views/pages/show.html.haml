@@ -1,5 +1,5 @@
 .row
-  .page-text.col-sm-8.col-sm-offset-2
+  .page-text.well.col-sm-8.col-sm-offset-2
     = @page.text
 
 .row.photo-carousel
@@ -9,7 +9,7 @@
         = link_to user_book_page_path(@user, @book, previous_page) do
           %i.fa.fa-chevron-left.fa-3x
   .page-image.col-sm-8
-    =image_tag @page.image_url
+    =image_tag @page.image_url(9)
   .col-sm-2
     .page-arrow
       - if next_page = @page.next_page

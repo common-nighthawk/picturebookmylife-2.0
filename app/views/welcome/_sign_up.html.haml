@@ -1,0 +1,21 @@
+%h3 Sign Up
+= form_for(:user, url: user_registration_path) do |f|
+  .field
+    = f.label :email
+    %span for password recovery. visible to only you
+    %br/
+    = f.email_field :email
+  .field
+    = f.label :username
+    %span what everyone will know you by
+    %br/
+    = f.text_field :username
+  .field
+    = f.label :password
+    %br/
+    = f.password_field :password, autocomplete: 'off'
+  .field
+    = f.label :password_confirmation, 'Password Confirmation'
+    %br/
+    = f.password_field :password_confirmation, autocomplete: 'off'
+  %button.btn.btn-warning{:type => "submit"} Create My Account

@@ -5,4 +5,8 @@ class Book < ActiveRecord::Base
   def cover_page
     pages.first || NullPage.new
   end
+
+  def self.featured
+    Book.where(featured: true).limit(12).order("RANDOM()")
+  end
 end

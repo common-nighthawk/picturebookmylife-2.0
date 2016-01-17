@@ -1,17 +1,28 @@
+.book-list {
+  img {
+    max-width: 100%;
+  }
+  img:last-of-type {
+    margin-bottom: 30px;
+  }
+}
+
 .controller-books {
   .cover-page {
     margin-top: 20px;
     position: relative;
   }
-  img {
-    width: 100%;
-  }
-  h3 {
-    text-align: center;
-    position: absolute;
-    top: 35%;
-    width: 100%;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 4em;
+  &.action-show {
+    h3 {
+      text-align: center;
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 4em;
+    }
+    img {
+      width: 100%;
+    }
   }
 }

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151220222911) do
   create_table "books", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
+    t.boolean  "featured",   default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
