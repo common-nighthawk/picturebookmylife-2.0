@@ -1,5 +1,9 @@
 .book-list
-  - books.each_with_index do |book, i|
-    .col-sm-3{ class: ('col-sm-offset-2' if i % 3 == 0) }
+  - books.each do |book|
+    .book-covers
       %h4= book.title
       = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.user, book)
+
+      - if book.user == current_user
+        .edit-double Edit
+        = link_to 'Edit', edit_user_book_path(book.user, book), class: 'btn btn-warning'

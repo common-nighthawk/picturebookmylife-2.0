@@ -1,4 +1,13 @@
 .row
   .cover-page.col-sm-8.col-sm-offset-2
-    = link_to image_tag(@book.cover_page.image_url), user_book_page_path(@user, @book, @book.pages.first)
-    %h3= @book.title
+    - first_page_path = @book.pages.first ? user_book_page_path(@user, @book, @book.pages.first) : 'http://www.google.com'
+    = link_to image_tag(@book.cover_page.image_url), first_page_path
+    %h3
+      %font{color: @book.title_color}
+        = @book.title
+
+- if @user == current_user
+  .row
+    .cover-page.col-sm-8.col-sm-offset-2
+      = link_to "Add a page", new_user_book_page_path(@user, @book), class: 'btn btn-warning'
+      = link_to "Edit #{@book.title}", edit_user_book_path(@user, @book), class: 'btn btn-warning pull-right'

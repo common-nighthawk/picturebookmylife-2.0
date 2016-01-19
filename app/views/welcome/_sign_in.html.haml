@@ -3,11 +3,11 @@
   .field
     = f.label :field_name, 'Username or Email'
     %br/
-    = f.text_field :email, autofocus: true
+    = f.text_field :email, class: 'form-control', autofocus: true
   .field
     = f.label :password
     %br/
-    = f.password_field :password, autocomplete: 'off'
+    = f.password_field :password, class: 'form-control', autocomplete: 'off'
   .field.hidden
     = f.check_box :remember_me, { checked: true }
     = f.label :remember_me

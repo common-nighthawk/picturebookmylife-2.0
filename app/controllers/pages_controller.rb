@@ -2,8 +2,21 @@ class PagesController < ApplicationController
   before_action :find_user
   before_action :find_book
 
+  def new
+  end
+
+  def create
+  end
+
   def show
     @page = @book.pages.find_by!(position: params[:id])
+  end
+
+  def edit
+    @page = @book.pages.find_by!(position: params[:id])
+  end
+
+  def index
   end
 
   private

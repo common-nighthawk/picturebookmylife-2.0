@@ -1,17 +1,17 @@
 $(document).ready(function() {
-  if ($('.photo-carousel').size) {
+  if ($('.photo-carousel').length) {
     setPhotoHeight();
   }
 });
 
 $(document).on('page:load', function() {
-  if ($('.photo-carousel').size) {
+  if ($('.photo-carousel').length) {
     setPhotoHeight();
   }
 });
 
 $(window).resize(function() {
-  if ($('.photo-carousel').size) {
+  if ($('.photo-carousel').length) {
     setPhotoHeight();
   }
 });

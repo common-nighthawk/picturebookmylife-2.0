@@ -12,4 +12,5 @@
     %h3 Featured Books
 
 .row
-  = render partial: 'books/list', locals: { books: Book.featured }
+  .col-sm-8.col-sm-offset-2
+    = render partial: 'books/list', locals: { books: Book.featured }

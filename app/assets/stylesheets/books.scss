@@ -1,17 +1,35 @@
+// GLOBAL
 .book-list {
-  img {
-    max-width: 100%;
-  }
-  img:last-of-type {
-    margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  .book-covers {
+    width: 33.33%;
+    padding-right: 30px;
+    position: relative;
+    .btn {
+      position: absolute;
+      bottom: 0;
+      width: calc(100% - 30px);
+    }
+    .edit-double { visibility: hidden; }
+    h4 {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis
+    }
+    img { max-width: 100%; }
+    img:last-of-type { margin-bottom: 30px; }
   }
 }
 
+// BOOK CONTROLLER
 .controller-books {
   .cover-page {
     margin-top: 20px;
     position: relative;
   }
+  input, button, .btn { width: 100%; }
+  button { margin-top: 10px; }
   &.action-show {
     h3 {
       text-align: center;
@@ -21,8 +39,13 @@
       font-family: 'Permanent Marker', cursive;
       font-size: 4em;
     }
-    img {
-      width: 100%;
+    img { width: 100%; }
+    .btn { width: 49.25%; }
+  }
+  &.action-index {
+    .new-book {
+      margin-top: 30px;
+      margin-bottom: 30px;
     }
   }
 }
