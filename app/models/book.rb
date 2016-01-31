@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  has_many :pages
+  has_many :pages, -> { order 'position DESC' }
   belongs_to :user
 
   validates :title, presence: true
@@ -11,6 +11,10 @@ class Book < ActiveRecord::Base
 
   def length
     pages.count
+  end
+
+  def next_position
+    (pages.last || NullPage.new).position + 1
   end
 
   def published?

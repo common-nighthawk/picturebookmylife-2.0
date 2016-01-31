@@ -6,7 +6,7 @@
     %ul.nav.navbar-nav.navbar-right.hidden-xs
       - if current_user
         %li
-          = link_to "your books", user_books_path(current_user)
+          = link_to "my books", user_books_path(current_user)
         %li
           = link_to "log out, #{current_user.username}", destroy_user_session_path, method: :delete
       - else

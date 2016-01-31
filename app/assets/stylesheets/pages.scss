@@ -1,9 +1,9 @@
 .controller-pages {
+  input, button, .btn { width: 100%; }
+  button { margin-top: 10px; }
   .page-text {
     margin-top: 30px;
     margin-bottom: 30px;
-  }
-  .page-image {
   }
   .page-arrow {
     margin-left: 50%;
@@ -25,5 +25,11 @@
     position: absolute;
     bottom: 5px;
     right: 30px;
+  }
+
+  &.action-new {
+    h4 {
+      margin-top: 30px;
+    }
   }
 }

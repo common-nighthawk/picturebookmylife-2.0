@@ -16,7 +16,7 @@ $(window).resize(function() {
   }
 });
 
-var setPhotoHeight = function(){
+var setPhotoHeight = function() {
   var windowHeight = $(window).height();
   var takenHeight = $('nav').outerHeight(true) + $('.page-text').outerHeight(true);
   var bottomMargin = 30;
