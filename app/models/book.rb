@@ -1,9 +1,13 @@
 class Book < ActiveRecord::Base
-  has_many :pages, -> { order 'position DESC' }
+  has_many :pages, -> { order 'position' }, dependent: :destroy
   belongs_to :user
 
   validates :title, presence: true
   validates :title_color, presence: true
+
+  scope :published, -> do
+    joins(:pages).uniq
+  end
 
   def cover_page
     pages.first || NullPage.new
@@ -15,10 +19,6 @@ class Book < ActiveRecord::Base
 
   def next_position
     (pages.last || NullPage.new).position + 1
-  end
-
-  def published?
-    pages.any?
   end
 
   def self.featured

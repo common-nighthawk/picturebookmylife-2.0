@@ -28,8 +28,12 @@
   }
 
   &.action-new {
-    h4 {
-      margin-top: 30px;
+    h4 { margin-top: 30px; }
+  }
+  &.action-show {
+    .btn {
+      width: 49.25%;
+      margin-top: 10px;
     }
   }
 }

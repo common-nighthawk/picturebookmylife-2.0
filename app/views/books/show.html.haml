@@ -1,6 +1,6 @@
 .row
   .cover-page.col-sm-8.col-sm-offset-2
-    - first_page_path = @book.pages.first ? user_book_page_path(@user, @book, @book.pages.first) : 'http://www.google.com'
+    - first_page_path = @book.pages.first ? user_book_page_path(@user, @book, @book.pages.first) : '#'
     = link_to image_tag(@book.cover_page.image_url), first_page_path
     %h3
       %font{color: @book.title_color}
@@ -8,7 +8,7 @@
     .by-line
       %h4
         written by
-        = link_to "@#{@user.username}", user_path(@user)
+        = link_to "@#{@user.username}", user_books_path(@user)
 
 
 

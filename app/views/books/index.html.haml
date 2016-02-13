@@ -5,7 +5,7 @@
 
 .row
   .col-sm-8.col-sm-offset-2
-    = render partial: 'list', locals: { books: @user.books }
+    = render partial: 'list', locals: { books: @books }
 
 - if @user == current_user
   .row.new-book

@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_action :find_user
-  before_action :find_book, except: :show
+  before_action :find_my_book, except: :show
+  before_action :find_any_book, only: :show
+  before_action :find_page, only: [:show, :edit, :update, :destroy]
 
   def new
     @page = @book.pages.new
@@ -11,21 +13,35 @@ class PagesController < ApplicationController
     if @page.save
       redirect_to user_book_page_path(@user, @book, @page)
     else
-      #TODO: make sure this works
       render 'new'
     end
   end
 
   def show
-    @book = @user.books.find(params[:book_id])
-    @page = @book.pages.find_by!(position: params[:id])
   end
 
   def edit
-    @page = @book.pages.find_by!(position: params[:id])
+  end
+
+  def update
+    if @page.update_attributes(page_params)
+      redirect_to user_book_page_path(@user, @book, @page)
+    else
+      flash[:alert] = @page.errors.full_messages.to_sentence
+      render :show
+    end
   end
 
   def index
+  end
+
+  def destroy
+    if @page.destroy
+      redirect_to user_book_path(@user, @book)
+    else
+      flash[:alert] = @page.errors.full_messages.to_sentence
+      render :show
+    end
   end
 
   private
@@ -38,7 +54,15 @@ class PagesController < ApplicationController
     @user = User.find_by('lower(username) = ?', params[:user_id].downcase)
   end
 
-  def find_book
+  def find_my_book
     @book = current_user.books.find(params[:book_id])
+  end
+
+  def find_any_book
+    @book = @user.books.find(params[:book_id])
+  end
+
+  def find_page
+    @page = @book.pages.find_by!(position: params[:id])
   end
 end

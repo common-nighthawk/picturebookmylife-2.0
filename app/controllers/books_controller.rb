@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :find_book, except: [:index, :new, :create]
 
   def index
+    @books = @user == current_user ? @user.books : @user.books.published
   end
 
   def new
@@ -26,11 +27,21 @@ class BooksController < ApplicationController
   end
 
   def update
-    raise
+    if @book.update_attributes(book_params)
+      redirect_to user_book_path(@user, @book)
+    else
+      flash[:alert] = @book.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   def destroy
-    raise
+    if @book.destroy
+      redirect_to user_books_path(@user)
+    else
+      flash[:alert] = @book.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   private

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index', via: :get
 
-  resources :users, only: :show do
+  resources :users, only: :none do
     resources :books do
       resources :pages
     end
