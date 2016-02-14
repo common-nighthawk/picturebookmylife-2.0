@@ -9,10 +9,13 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = @book.pages.new(page_params.merge(position: @book.next_position))
+    @page = @book.pages.new(page_params)
+    @page.position = @book.next_position
     if @page.save
+      flash.clear
       redirect_to user_book_page_path(@user, @book, @page)
     else
+      flash[:alert] = @page.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -25,18 +28,21 @@ class PagesController < ApplicationController
 
   def update
     if @page.update_attributes(page_params)
+      flash.clear
       redirect_to user_book_page_path(@user, @book, @page)
     else
       flash[:alert] = @page.errors.full_messages.to_sentence
-      render :show
+      render :edit
     end
   end
 
   def index
+    @pages = @book.pages
   end
 
   def destroy
     if @page.destroy
+      flash.clear
       redirect_to user_book_path(@user, @book)
     else
       flash[:alert] = @page.errors.full_messages.to_sentence
@@ -63,6 +69,6 @@ class PagesController < ApplicationController
   end
 
   def find_page
-    @page = @book.pages.find_by!(position: params[:id])
+    @page = @book.pages.find(params[:id])
   end
 end

@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index', via: :get
 
+  get 'photo/:id' => 'js#photo'
+  post 'positions' => 'js#pages'
+
   resources :users, only: :none do
     resources :books do
       resources :pages
     end
   end
-
-  get 'photo/:id' => 'js#photo'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

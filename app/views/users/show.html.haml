@@ -1,7 +1,7 @@
 .row
   .col-sm-8.col-sm-offset-2
     %h3
-      = @user == current_user ? "You" : "@#{@user.username}"
+      = current_user?(@user) ? "You" : "@#{@user.username}"
     %h5= "member since #{@user.created_at.strftime("%B %e, %Y")}"
 
 .row

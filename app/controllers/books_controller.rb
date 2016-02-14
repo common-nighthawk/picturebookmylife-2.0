@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   def create
     @book = @user.books.new(book_params)
     if @book.save
+      flash.clear
       redirect_to user_book_path(@user, @book)
     else
       flash[:alert] = @book.errors.full_messages.to_sentence
@@ -28,6 +29,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update_attributes(book_params)
+      flash.clear
       redirect_to user_book_path(@user, @book)
     else
       flash[:alert] = @book.errors.full_messages.to_sentence
@@ -37,6 +39,7 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy
+      flash.clear
       redirect_to user_books_path(@user)
     else
       flash[:alert] = @book.errors.full_messages.to_sentence

@@ -1,3 +1,20 @@
-%p this is where a user can order the pages of a book.
+.row
+  .col-sm-8.col-sm-offset-2
+    %h3 Edit Page Order
+    %ul#page-sort
+      - @pages.each do |page|
+        - cache(page) do
+          = content_tag_for(:li, page, class: 'well') do
+            .row
+              .col-xs-1.handle
+                %i.fa.fa-arrows-v
+              .col-xs-1
+                = image_tag page.image_url(1)
+              .col-xs-8.page-text
+                = page.text
+              .col-xs-2
+                = link_to 'View', user_book_page_path(@user, @book, page), class: 'btn btn-warning'
 
-%p will need ajax for set positions.
+.row.last-row
+  .col-sm-8.col-sm-offset-2
+    = link_to "Back to #{@book.title}", user_book_path(@user, @book), class: 'btn btn-warning'

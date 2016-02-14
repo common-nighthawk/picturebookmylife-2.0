@@ -1,8 +1,8 @@
 class Page < ActiveRecord::Base
   belongs_to :book
+  validates :flickr_photo_id, presence: true
 
   def image_url(size=nil)
-    api_key = "0ce9a627e075627628e07d3280ae1efe"
     response = HTTParty.get("https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=" + api_key + "&photo_id=" + flickr_photo_id + "&format=json&nojsoncallback=1")
     json = JSON.parse(response.body)
     unless json['stat'] == 'fail'
@@ -20,7 +20,9 @@ class Page < ActiveRecord::Base
     book.pages.find_by(position: position - 1)
   end
 
-  def to_param
-    position.to_s
+  private
+
+  def api_key
+    '0ce9a627e075627628e07d3280ae1efe'
   end
 end

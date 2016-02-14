@@ -1,10 +1,11 @@
 .book-list
   - books.each do |book|
-    .book-covers
-      %h4= book.title
-      %h5= link_to "@#{book.user.username}", user_books_path(book.user) unless (action_name == 'index' && controller_name == 'books')
-      = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.user, book)
+    - cache(book) do
+      .book-covers
+        %h4= book.title
+        %h5= link_to "@#{book.user.username}", user_books_path(book.user) unless (action_name == 'index' && controller_name == 'books')
+        = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.user, book)
 
-      - if book.user == current_user
-        .edit-double Edit
-        = link_to 'Edit', edit_user_book_path(book.user, book), class: 'btn btn-warning'
+        - if current_user?(book.user)
+          .edit-double Edit
+          = link_to 'Edit', edit_user_book_path(book.user, book), class: 'btn btn-warning'
