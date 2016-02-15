@@ -3,9 +3,8 @@
     - cache(book) do
       .book-covers
         %h4= book.title
-        %h5= link_to "@#{book.user.username}", user_books_path(book.user) unless (action_name == 'index' && controller_name == 'books')
-        = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.user, book)
-
-        - if current_user?(book.user)
+        %h5= link_to "@#{book.author.username}", user_books_path(book.author) unless profile_page?
+        = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.author, book)
+        - if current_user?(book.author)
           .edit-double Edit
-          = link_to 'Edit', edit_user_book_path(book.user, book), class: 'btn btn-warning'
+          = link_to 'Edit', edit_user_book_path(book.author, book), class: 'btn btn-warning'

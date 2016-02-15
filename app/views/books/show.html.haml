@@ -1,17 +1,17 @@
 .row
   .cover-page.col-sm-8.col-sm-offset-2
-    - first_page_path = @book.pages.first ? user_book_page_path(@user, @book, @book.pages.first) : '#'
-    = link_to image_tag(@book.cover_page.image_url), first_page_path
+    -first_page_path = @book.pages.first ? user_book_page_path(@user, @book, @book.pages.first) : '#'
+    =link_to image_tag(@book.cover_page.image_url), first_page_path
     %h3
       %font{color: @book.title_color}
-        = @book.title
+        =@book.title
     .by-line
       %h4
         written by
-        = link_to "@#{@user.username}", user_books_path(@user)
+        =link_to "@#{@user.username}", user_books_path(@user)
 
-- if current_user?(@user)
+-if current_user?(@user)
   .row.hidden-xs
     .cover-page.col-sm-8.col-sm-offset-2
-      = link_to "Add a page", new_user_book_page_path(@user, @book), class: 'btn btn-warning'
-      = link_to "Edit #{@book.title}", edit_user_book_path(@user, @book), class: 'btn btn-warning pull-right'
+      =link_to "Add a page", new_user_book_page_path(@user, @book), class: 'btn btn-warning'
+      =link_to "Edit #{@book.title}", edit_user_book_path(@user, @book), class: 'btn btn-warning pull-right'

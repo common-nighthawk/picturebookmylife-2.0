@@ -53,10 +53,6 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :title_color)
   end
 
-  def find_user
-    @user = User.find_by('lower(username) = ?', params[:user_id].downcase)
-  end
-
   def find_book
     @book = @user.books.find(params[:id])
   end

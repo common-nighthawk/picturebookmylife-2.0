@@ -1,8 +1,12 @@
 class PagesController < ApplicationController
   before_action :find_user
-  before_action :find_my_book, except: :show
-  before_action :find_any_book, only: :show
+  before_action :find_current_user_book, except: :show
+  before_action :find_book, only: :show
   before_action :find_page, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @pages = @book.pages
+  end
 
   def new
     @page = @book.pages.new
@@ -10,7 +14,6 @@ class PagesController < ApplicationController
 
   def create
     @page = @book.pages.new(page_params)
-    @page.position = @book.next_position
     if @page.save
       flash.clear
       redirect_to user_book_page_path(@user, @book, @page)
@@ -36,10 +39,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def index
-    @pages = @book.pages
-  end
-
   def destroy
     if @page.destroy
       flash.clear
@@ -56,15 +55,11 @@ class PagesController < ApplicationController
     params.require(:page).permit(:text, :flickr_photo_id)
   end
 
-  def find_user
-    @user = User.find_by('lower(username) = ?', params[:user_id].downcase)
-  end
-
-  def find_my_book
+  def find_current_user_book
     @book = current_user.books.find(params[:book_id])
   end
 
-  def find_any_book
+  def find_book
     @book = @user.books.find(params[:book_id])
   end
 

@@ -5,15 +5,7 @@
       - @pages.each do |page|
         - cache(page) do
           = content_tag_for(:li, page, class: 'well') do
-            .row
-              .col-xs-1.handle
-                %i.fa.fa-arrows-v
-              .col-xs-1
-                = image_tag page.image_url(1)
-              .col-xs-8.page-text
-                = page.text
-              .col-xs-2
-                = link_to 'View', user_book_page_path(@user, @book, page), class: 'btn btn-warning'
+            = render partial: 'card', locals: { page: page }
 
 .row.last-row
   .col-sm-8.col-sm-offset-2

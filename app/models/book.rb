@@ -1,7 +1,9 @@
 class Book < ActiveRecord::Base
-  has_many :pages, -> { order 'position' }, dependent: :destroy
-  belongs_to :user
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
+  has_many :pages, -> { order 'position' }, dependent: :destroy
+
+  validates :author, presence: true
   validates :title, presence: true
   validates :title_color, presence: true
 
@@ -22,7 +24,7 @@ class Book < ActiveRecord::Base
   end
 
   def self.featured
-    Book.where(featured: true).limit(12).order("RANDOM()")
+    self.where(featured: true).limit(12).order("RANDOM()")
   end
 
   def self.title_colors
