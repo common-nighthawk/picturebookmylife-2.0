@@ -22,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    fresh_when(@book)
   end
 
   def edit

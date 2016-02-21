@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   before_action :find_page, only: [:show, :edit, :update, :destroy]
 
   def index
+    fresh_when(@book)
     @pages = @book.pages
   end
 
@@ -24,6 +25,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    fresh_when(@page)
   end
 
   def edit

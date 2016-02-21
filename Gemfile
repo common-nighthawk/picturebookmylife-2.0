@@ -16,6 +16,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'httparty'
+gem 'dalli'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
