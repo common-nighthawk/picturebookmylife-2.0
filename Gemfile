@@ -17,6 +17,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'httparty'
 gem 'dalli'
+gem 'figaro'
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -31,6 +33,11 @@ group :development, :test do
   gem 'byebug'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
 end
 
 group :development do

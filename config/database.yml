@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: picturebookmylife-2_production
-  username: picturebookmylife-2
-  password: <%= ENV['PICTUREBOOKMYLIFE-2_DATABASE_PASSWORD'] %>
+  username: secret
+  password: secret
