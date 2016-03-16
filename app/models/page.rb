@@ -13,7 +13,8 @@ class Page < ActiveRecord::Base
     json = fetch_flickr_json
     unless json['stat'] == 'fail'
       photos = json['sizes']['size']
-      size ? photos[size]['source'] : photos.last['source']
+      size = -1 unless (size && photos[size])
+      photos[size]['source']
     end
   end
 
