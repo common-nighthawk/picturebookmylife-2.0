@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    fresh_when(@page)
+    fresh_when(@book)
   end
 
   def edit
