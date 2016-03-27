@@ -3,11 +3,11 @@
 
   = form_for @page, url: {action: "create"} do |f|
     .field
-      = f.label :text, 'Words'
-      = f.text_area :text, class: 'form-control', autofocus: true, rows: 8
-    .field
       = f.label :flickr_photo_id, 'Picture (Flickr Photo ID)'
-      = f.number_field :flickr_photo_id, class: 'form-control'
+      = f.number_field :flickr_photo_id, class: 'form-control', autofocus: true
+    .field
+      = f.label :text, 'Words'
+      = f.text_area :text, class: 'form-control', rows: 8
 
     %button.btn.btn-warning{:type => "submit"} Create
 

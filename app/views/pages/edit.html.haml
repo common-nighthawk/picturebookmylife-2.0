@@ -3,11 +3,11 @@
 
   = form_for @page, url: {action: "update"} do |f|
     .field
-      = f.label :text, 'Words'
-      = f.text_area :text, class: 'form-control', autofocus: true, rows: 8
-    .field
       = f.label :flickr_photo_id, 'Picture (Flickr Photo ID)'
       = f.number_field :flickr_photo_id, class: 'form-control'
+    .field
+      = f.label :text, 'Words'
+      = f.text_area :text, class: 'form-control', autofocus: true, rows: 8
 
     %button.btn.btn-warning{:type => "submit"} Update
 
