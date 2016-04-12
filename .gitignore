@@ -15,3 +15,4 @@
 /config/application.yml
 /config/database_prod.yml
 /db_backups/
+/config/deploy/
