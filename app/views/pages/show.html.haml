@@ -3,14 +3,14 @@
     = @page.text
 
 .row.photo-carousel
-  .col-sm-2
+  .col-xs-2
     .page-arrow
       - if previous_page = @page.previous_page
         = link_to user_book_page_path(@user, @book, previous_page) do
           %i.fa.fa-chevron-left.fa-3x
-  .page-image.col-sm-8
+  .page-image.col-xs-8
     =image_tag @page.image_url(9)
-  .col-sm-2
+  .col-xs-2
     .page-arrow
       - if next_page = @page.next_page
         = link_to user_book_page_path(@user, @book, next_page) do
