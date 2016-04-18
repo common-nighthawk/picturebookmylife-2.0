@@ -27,10 +27,10 @@ class SessionsController < Devise::SessionsController
 
   def set_user
     if sign_in_params[:email].include?('@')
-      @user = User.find_by(email: sign_in_params[:email])
+      @user = User.find_by('lower(email) = ?', sign_in_params[:email].downcase)
       set_flash_error('no email') unless @user
     else
-      @user = User.find_by(username: sign_in_params[:email])
+      @user = User.find_by('lower(username) = ?', sign_in_params[:email].downcase)
       set_flash_error('no username') unless @user
     end
   end
