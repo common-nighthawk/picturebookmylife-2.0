@@ -1,10 +1,10 @@
 .book-list
   - books.each do |book|
-    - cache(book) do
-      .book-covers
+    .book-covers
+      - cache([book, profile_page?]) do
         %h4= book.title
         %h5= link_to "@#{book.author.username}", user_books_path(book.author) unless profile_page?
         = link_to image_tag(book.cover_page.image_url(5)), user_book_path(book.author, book)
-        - if current_user?(book.author)
-          .edit-double Edit
-          = link_to 'Edit', edit_user_book_path(book.author, book), class: 'btn btn-warning'
+      - if current_user?(book.author)
+        .edit-double Edit
+        = link_to 'Edit', edit_user_book_path(book.author, book), class: 'btn btn-warning'
