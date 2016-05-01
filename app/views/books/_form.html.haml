@@ -1,0 +1,9 @@
+= form_for [@user, @book] do |f|
+  .field
+    = f.label :title
+    = f.text_field :title, class: 'form-control', autofocus: (action_name == 'new')
+  .field
+    = f.label :title_color
+    = f.select :title_color, Book.title_colors, { }, class: 'form-control'
+  %button.btn.btn-warning{:type => "submit"}
+    = submit_button

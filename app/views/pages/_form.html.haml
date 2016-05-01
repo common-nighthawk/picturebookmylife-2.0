@@ -1,0 +1,9 @@
+= form_for [@user, @book, @page] do |f|
+  .field
+    = f.label :flickr_photo_id, 'Picture (Flickr Photo ID)'
+    = f.number_field :flickr_photo_id, class: 'form-control', autofocus: (action_name == 'new')
+  .field
+    = f.label :text, 'Words'
+    = f.text_area :text, class: 'form-control', rows: 8, autofocus: (action_name == 'edit')
+  %button.btn.btn-warning{:type => "submit"}
+    = submit_button

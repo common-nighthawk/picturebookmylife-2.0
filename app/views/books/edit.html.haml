@@ -1,16 +1,7 @@
 .col-sm-offset-2.col-sm-8
   %h3= "Edit #{@book.title}"
-
-  = form_for @book, url: {action: "update"} do |f|
-    .field
-      = f.label :title
-      = f.text_field :title, class: 'form-control'
-    .field
-      = f.label :title_color
-      = f.select :title_color, Book.title_colors, { }, class: 'form-control'
-
-    %button.btn.btn-warning{:type => "submit"} Update
+  = render partial: 'form', locals: { submit_button: 'Update' }
 
   %h3 Advanced Options
   = link_to "Order Pages", user_book_pages_path(@user, @book), class: 'btn btn-warning'
-  = link_to "Delete #{@book.title}", { action: :destroy, id: @book.id }, method: :delete, data: { confirm: 'Are you sure you want to delete this book? All the pages will be lost.' }, class: 'btn btn-danger pull-right'
+  = link_to "Delete #{@book.title}", { action: :destroy, id: @book.id }, method: :delete, data: { confirm: destroy_book_confirmation }, class: 'btn btn-danger pull-right'
