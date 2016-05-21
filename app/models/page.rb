@@ -8,9 +8,10 @@ class Page < ActiveRecord::Base
   validates :position, uniqueness: { scope: :book }
 
   before_validation :set_position, on: :create
+  before_save :set_image_json
 
   def image_url(size=nil)
-    json = fetch_flickr_json
+    json = image_json || image_json_from_api
     unless json['stat'] == 'fail'
       photos = json['sizes']['size']
       size = -1 unless (size && photos[size])
@@ -32,11 +33,15 @@ class Page < ActiveRecord::Base
     self.position = book.next_position
   end
 
-  def fetch_flickr_json
-    JSON.parse(HTTParty.get(remote_images_url).body)
+  def set_image_json
+    self.image_json = image_json_from_api if flickr_photo_id_changed?
   end
 
-  def remote_images_url
+  def image_json_from_api
+    JSON.parse(HTTParty.get(api_image_endpoint).body)
+  end
+
+  def api_image_endpoint
     "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=" + api_key + "&photo_id=" + flickr_photo_id + "&format=json&nojsoncallback=1"
   end
 
